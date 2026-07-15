@@ -14,7 +14,7 @@ export const useGameLogic = (cardValues) =>{
                 clearInterval(id.current);
                 id.current=null;
             }
-            setTime(3);
+            setTime(60);
             id.current = setInterval(() => {
                 setTime(prev => {
                     if (prev <= 0) return 0;

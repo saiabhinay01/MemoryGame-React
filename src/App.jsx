@@ -6,10 +6,8 @@ import { useGameLogic } from "./hooks/gameLogic";
 import { useState } from "react";
 import { Start } from "./Start";
 
-const cardValues= ["🍹","🥐","🥯","🍕","🍔","🌭","🧀","🧁",
-"🍹","🥐","🥯","🍕","🍔","🌭","🧀","🧁"
-]
-
+const cardValues= ["🍄","⭐", "🪙", "☁️","💣","🌴", "🏰","🚩"
+    , "🍄","⭐", "🪙", "☁️","💣","🌴", "🏰","🚩" ]
 function App() {
     const {cards,m,time,init,won,lose,handleClick,id}=useGameLogic(cardValues);
     const [start,setStart] = useState(false);
@@ -25,7 +23,7 @@ function App() {
     <div className="app">
         <GameHeader time={time} moves={m}/>
         {won && <WinMessage moves={m} reset={init}/>}
-        {lose &&<LoseMessage/>}
+        {lose &&<LoseMessage reset={init}/>}
         <div className="cards-grid">
             {cards.map((card)=>(
                 <Card key={card.id} card={card} fun={handleClick}/>
