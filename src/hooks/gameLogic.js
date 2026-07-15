@@ -1,15 +1,27 @@
 import { useState,useEffect,useRef} from "react";
-export const gameLogic = ({cardValues}) =>{
+export const useGameLogic = (cardValues) =>{
         const [cards,setCards] = useState([]);
         const [fc,setfc]=useState([]);
         const [m,setm]=useState(0);
-        const [time,settime]=useState(60);
+        const [time,setTime]=useState(60);
         const [busy,setBusy]=useState(false);
-    
+        const id=useRef(null);
     
         const init=()=>{
             //SHUFFLE
             let cc = [...cardValues];
+            if(id.current!=null){
+                clearInterval(id.current);
+                id.current=null;
+            }
+            setTime(3);
+            id.current = setInterval(() => {
+                setTime(prev => {
+                    if (prev <= 0) return 0;
+                    return prev - 1;
+                });
+            }, 1000);
+
             let finalcards = [];
             while(cc.length>0){
                 let k = Math.floor(Math.random()*(cc.length));
@@ -29,9 +41,9 @@ export const gameLogic = ({cardValues}) =>{
             setBusy(false);
         };
         useEffect(()=>{init()},[]);
-    
+        
         const handleClick=(card)=>{
-            if(busy || card.isFlipped || card.isMatched){
+            if(lose || busy || card.isFlipped || card.isMatched){
                 return;
             }
             
@@ -83,6 +95,22 @@ export const gameLogic = ({cardValues}) =>{
             
         };
         const won = cards.length > 0 && cards.every(card => card.isMatched);
+        const lose = (time===0&&!won);
+        useEffect(()=>{
+            if(won){
+                clearInterval(id.current);
+            }
 
-        return {cards,m,time,won,init,handleClick};
+            if(lose){
+                clearInterval(id.current);
+
+                setCards(prev =>
+                    prev.map(c=>({
+                        ...c,
+                        isFlipped:true
+                    }))
+                );
+            }
+        },[won,lose]);
+        return {cards,m,time,won,lose,init,handleClick,id};
 }

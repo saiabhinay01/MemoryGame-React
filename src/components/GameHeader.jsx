@@ -1,7 +1,6 @@
 export const GameHeader=({time,moves})=>{
     return( 
     <div className="game-header">
-        <h1>MEMORY GAME</h1>
         <div className="stats">
             <div className="stat-item">
                 <span className="stat-label">Time:</span>

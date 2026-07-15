@@ -17,6 +17,63 @@ body {
   overflow: hidden;
 }
 
+.start-screen{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:25px;
+    text-align:center;
+
+    background:#0a0a0a;
+}
+
+.start-title{
+    font-size:clamp(2.8rem,6vw,4.5rem);
+    font-weight:700;
+    color:white;
+}
+
+.start-text{
+    max-width:500px;
+    font-size:1.1rem;
+    color:#a1a1aa;
+    line-height:1.6;
+}
+
+.start-btn{
+    margin-top:10px;
+
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+
+    border:none;
+    border-radius:12px;
+
+    padding:14px 36px;
+
+    font-size:1.1rem;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:0.25s;
+
+    box-shadow:0 8px 25px rgba(102,126,234,.35);
+}
+
+.start-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(102,126,234,.45);
+}
+
+.start-btn:active{
+    transform:scale(.96);
+}
+
 #root {
   width: 100%;
   height: 100%;
@@ -35,7 +92,7 @@ body {
 }
 
 .game-header {
-  width: min(90vw, 650px);
+  width: 250px;
 
   display: flex;
   flex-direction: column;
@@ -43,7 +100,7 @@ body {
   gap: 1.2vh;
 
   background: rgba(15, 23, 42, 0.9);
-  padding: 2vh;
+  padding: 1.5vh;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -96,8 +153,8 @@ body {
 }
 
 .cards-grid {
-  width: min(70vh, 80vw);
-  height: min(70vh, 80vw);
+  width: min(60vh, 80vw);
+  height: min(60vh, 80vw);
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -165,16 +222,26 @@ body {
 }
 
 .win-message{
-  background:rgba(15,23,42,.95);
-  padding:25px 45px;
-  border-radius:15px;
-  text-align:center;
+  width: min(45vw, 350px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: rgba(15,23,42,.95);
+  padding: 1.5vh;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.1);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  text-align: center;
 }
 
 .win-message h2{
-  font-size:clamp(1.6rem,3vw,2rem);
+  font-size: 25px;
 }
 
 .win-message p{
-  color:#a1a1aa;
+  font-size: 1rem;
+  color: #a1a1aa;
 }
