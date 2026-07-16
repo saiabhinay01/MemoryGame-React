@@ -1,18 +1,103 @@
-# React + Vite
+# 🧠 Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive Memory Card Matching Game built with **React** using functional components and a custom hook for game logic.
 
-Currently, two official plugins are available:
+The objective is to match all pairs of cards before the timer reaches zero.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- 🎴 16 shuffled cards (8 matching pairs)
+- ▶️ Start Game screen
+- ⏱️ 60-second countdown timer
+- 🔀 Random shuffle on every new game
+- 👆 Flip two cards at a time
+- ✅ Matched cards remain visible
+- ❌ Unmatched cards automatically flip back
+- 🚫 Prevents clicking while cards are flipping
+- 📊 Move counter
+- 🎯 Accuracy calculation
+- 🏆 Win screen
+- 💀 Lose screen
+- 🃏 Reveals all cards when time runs out
+- 🔄 Restart game functionality
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript (ES6+)
+- CSS3
+
+---
+
+## 🧩 React Concepts Used
+
+- Functional Components
+- Props
+- useState
+- useEffect
+- useRef
+- Custom Hooks
+- Conditional Rendering
+- Event Handling
+- State Management
+
+---
+
+## 🎮 Game Rules
+
+- Click **Start Game** to begin.
+- Match all **8 pairs** before the timer expires.
+- Only two cards can be flipped at a time.
+- Matching cards stay face up.
+- Non-matching cards flip back after a short delay.
+- The game ends when:
+  - All pairs are matched (**Win**)
+  - The timer reaches **0** (**Lose**)
+
+---
+
+## 📊 Accuracy Formula
+
+```
+Accuracy = (8 / Moves) × 100
+```
+
+where **8** is the minimum number of moves required to complete the game.
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│
+├── components/
+│   ├── Card.jsx
+│   ├── GameHeader.jsx
+│   ├── Start.jsx
+│   ├── WinMessage.jsx
+│   └── LoseMessage.jsx
+│
+├── hooks/
+│   └── useGameLogic.js
+│
+├── App.jsx
+├── App.css
+└── main.jsx
+```
+
+---
+
+## 🚀 Future Enhancements
+
+- Difficulty Levels
+- Best Score / High Score
+- Sound Effects
+- Card Flip Animations
+- Pause Game
+- Theme Selection
+- Leaderboard
